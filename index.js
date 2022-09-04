@@ -17,10 +17,10 @@ app.route('/api/shorturl')
   .post(async(req, res) => {
     console.log('POST Request', req.body);
     const url = req.body.url
-    const isValidUrl = true //api.isValidUrl(url)
+    const isValidUrl = api.isValidUrl(url)
     let resObj = {}
+    console.log('isValidUrl', isValidUrl)
     if (isValidUrl) {
-      console.log('submitting new url', url);
       newUrl = await api.submitNewUrl(url)
       resObj = newUrl
     }
@@ -50,7 +50,7 @@ app.get('/', (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log('server started');
+  console.log('server started at port 3000');
 });
 
 /*

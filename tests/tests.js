@@ -4,7 +4,8 @@ const urls = [
   'https://ca.yahoo.com',
   'https://ford.ca',
   'https://edition.cnn.com',
-  'https://www.lenovo.com'
+  'https://www.lenovo.com',
+  'wewqewe',
 ]
 
 urls.forEach((url) => {

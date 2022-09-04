@@ -23,7 +23,7 @@ const submitNewUrl = async (url) => {
   });
 
   newUrl = await shortUrl.save();
-  console.log('newUrl', newUrl);
+  // console.log('newUrl', newUrl);
   return newUrl;
 }
 
@@ -34,12 +34,17 @@ const retrieveUrl = async (shortUrl) => {
   return url
 }
 
-const isValidUrl = async (url) => {
-  const dnsLookupResult = await dns.lookup(url, {}, (a,b,c) => {
-    console.log(a,b,c)
-  });
-  console.log('dnsLookupResult', dnsLookupResult)
-  return false
+const isValidUrl = (urlString) => {
+  const urlRegEx = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/
+  const testResult = urlRegEx.test(urlString)
+  console.log('testResult', testResult)
+  return testResult;
+  // const url = new URL(urlString);
+  // const result = await dns.lookup(url.hostname, {}, (error) => {
+  //   return error ? false : true
+  // })
+  // console.log('result >>', result);
+  // return result;
 }
 
 const getUrlCount = async (done) => {
